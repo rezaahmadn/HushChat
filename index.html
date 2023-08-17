@@ -124,6 +124,10 @@
         $('#messages').append($('<li class="incoming">').text(msg));
         scrollToBottom(); // Scroll to the bottom
       })
+
+      $('#input').on('focus', function () {
+        setTimeout(scrollToBottom, 0); // Delay scrolling to ensure the keyboard has fully opened
+      });
     });
   </script>
 </body>
