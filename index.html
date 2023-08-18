@@ -113,9 +113,11 @@
       const socket = io();
       $('form').submit(function () {
         const message = $('#input').val();
-        $('#messages').append($('<li class="outgoing">').text(message));
-        scrollToBottom(); // Scroll to the bottom
-        socket.emit('chat message', message);
+        if (message) {
+          messages.append($('<li class="outgoing">').text(message));
+          scrollToBottom(); // Scroll to the bottom
+          socket.emit('chat message', message);
+        }
         $('#input').val('');
         return false;
       });
